@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Licensed under # GNU Lesser general license v2
-echo "By JavaBabyX ,Remove repeated text you don't want without leaving your shell"
+echo "By JavaBabyX ,Remove repeated text you don't want without leaving your shell /n"
 
 #//from my folder t2// this helps with dealing with adb scripts for package disabling while testing and other stuff
 # or means i forgort the right usage 
@@ -14,27 +14,31 @@ echo "By JavaBabyX ,Remove repeated text you don't want without leaving your she
 # then i find critical system apps not to disable and remove from file using vim or nano, otherwise you'll 
 # have a headache preferably have otg keyboard in case something goes wrong then you can use that to enable everything but Ill have a list for samsung one ui 3 soon
 # then ./appsysoff
-echo "type full filename"
-read -p "Enter the file name" filename
+#!/bin/bash
 
-read -p "Enter the text in the file" text
+echo "By JavaBabyX ,Remove repeated text you don't want without leaving your shell /n"
 
-echo "Don't put space before or after your text" 
-read -p "Enter the the replace text" newtext
+echo "Type the full filename"
+read -p "Enter the file name: " filename
 
-echo "Choose a number"
+read -p "Text to replace: " text
+
+echo "!Don't put space before or after your text\n" 
+read -p "Enter the new text: " newtext
+
+echo "Choose a number: "
 read -p "Add: 1, space before. 2, space after. 3, space 1&2, Press Enter for none " spacing
 
 # if the script is not working remove option 3 or I missed something 
 
-if ["$spacing" = "1" ]: then
+if [ "$spacing" = "1" ]; then
     newtext=" ${newtext}"
-if ["$spacing" = "2" ]: then
+elif [ "$spacing" = "2" ]; then
     newtext="${newtext} "
-if ["$spacing" = "3" ]: then
+elif [ "$spacing" = "3" ]; then
     newtext=" ${newtext} "
-else:
-    echo "no spaces"
+else
+    echo "no spaces chosen\n"
 fi
 
 sed -i "s/$text/$newtext/g" "$filename"
